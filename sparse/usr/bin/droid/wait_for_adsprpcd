@@ -1,0 +1,12 @@
+#!/bin/sh
+
+while [ "$(/usr/bin/getprop vendor.qcom.adspup)" != "1" ]; do
+    echo "Waiting for adsprpcd"
+    sleep 1
+done
+
+# wait for services to settle
+sleep 3
+
+exit 0
+
