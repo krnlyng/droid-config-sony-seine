@@ -1,0 +1,11 @@
+[Unit]
+Description=Audio permission fixup
+After=pulseaudio.service
+Before=multi-user.target systemd-user-sessions.service
+PartOf=emergency-call.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/bin/droid/fixup_calibration
+Restart=no

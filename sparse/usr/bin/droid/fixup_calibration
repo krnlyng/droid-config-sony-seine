@@ -1,0 +1,17 @@
+#!/bin/sh
+FILE=/data/vendor/audio/cirrus_sony.cal
+
+count=0
+while [ ! -f $FILE ] && [ $count -lt 10 ]; do
+    echo "Waiting for calibration to finish."
+    sleep 1
+    count=$((count+1))
+done
+
+if [ -f $FILE ]; then
+    chmod 770 $FILE
+    chown pulse:audio $FILE
+else
+    echo "Calibration failed."
+fi
+
